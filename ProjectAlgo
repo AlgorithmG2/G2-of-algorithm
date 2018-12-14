@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{ 
+    int n,x;
+    scanf("%d %d",&n,&x);
+    int v[n],a[n];
+    int temp=0;
+    while(temp<n){
+                  scanf("%d %d",&v[temp],&a[temp]);
+                  temp++;
+    }
+    
+    long long int dp[x+1];
+    dp[0]=0;
+    for(int i=1;i<=x;i++){
+            dp[i]=-100000000000000000;
+    }
+    
+    temp=0;
+    while(temp<n){
+                  for(int j=x;j>=a[temp];j--){
+                          dp[j]=(dp[j]>dp[j-a[temp]]+v[temp])?dp[j]:(dp[j-a[temp]]+v[temp]);
+                  }
+                  temp++;
+    }
+    if(dp[x]>0){
+                printf("%lld",dp[x]);
+    }else{
+          printf("Got caught!");
+    }
+
+return 0;   
+}
