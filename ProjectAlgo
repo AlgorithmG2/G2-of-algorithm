@@ -3,11 +3,14 @@
 
 int main()
 { 
+    //Here I take 2 variable where n is 'Number of pessenger' & x is 'Number of gold'
     int n,x;
     scanf("%d %d",&n,&x);
+    //Here I take 2 array, 'v' is for value of gold & 'a' is for 'amount of gold'
     int v[n],a[n];
     int temp=0;
     while(temp<n){
+                  //Take the values of v & a
                   scanf("%d %d",&v[temp],&a[temp]);
                   temp++;
     }
@@ -19,6 +22,7 @@ int main()
     }
     
     temp=0;
+    //Here we calculate the Benifit using Greedy Algorithm
     while(temp<n){
                   for(int j=x;j>=a[temp];j--){
                           dp[j]=(dp[j]>dp[j-a[temp]]+v[temp])?dp[j]:(dp[j-a[temp]]+v[temp]);
